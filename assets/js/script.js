@@ -7,22 +7,26 @@ for (let pokemon of pokemons) {
     console.log(`The pokemon with id number ${pokemon.id} is ${pokemon.name} with type ${pokemon.type}`)
 }
 
+localStorage.setItem('pokemons', pokemonString)
+
 
 // ESERCIZIO 2
 
 let counterDiv = document.getElementById('counter')
 let counter = 0
 
-onLoad = function () {
-    let savedNumb = localStorage.getItem('counterN')
+onload = function () {
+    let savedNumb = sessionStorage.getItem('counterN')
+    console.log("bla")
     if (savedNumb !== null) {
         counter = JSON.parse(savedNumb)
+        counterDiv.innerHTML = counter
     }
 }
 
-const startCounter = () => {
+function startCounter() {
     counter++
     counterDiv.innerHTML = counter
     let counterNumb = JSON.stringify(counter)
-    localStorage.setItem('counterN', counterNumb)
+    sessionStorage.setItem('counterN', counterNumb)
 }
